@@ -23,7 +23,13 @@ const ProgressBar = ({ value, size }) => {
 
 	return (
 		<ProgressWrapper htmlFor='progress-bar'>
-			<Progress id={'progress-bar'} style={styles} value={value} max={100} />
+			<Progress
+				id={'progress-bar'}
+				aria-valuenow={value}
+				style={styles}
+				value={value}
+				max={100}
+			/>
 			<VisuallyHidden>{value} percent complete</VisuallyHidden>
 		</ProgressWrapper>
 	);
