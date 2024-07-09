@@ -8,7 +8,7 @@ import VisuallyHidden from '../VisuallyHidden';
 const SIZES = {
 	large: {
 		'--height': `${24 / 16}rem`,
-		padding: '4px',
+		'--padding': '4px',
 	},
 	medium: {
 		'--height': `${12 / 16}rem`,
@@ -22,11 +22,10 @@ const ProgressBar = ({ value, size }) => {
 	const styles = SIZES[size];
 
 	return (
-		<>
-			<ProgressWrapper htmlFor='progress-bar'>
-				<Progress id={'progress-bar'} style={styles} value={value} max={100} />
-			</ProgressWrapper>
-		</>
+		<ProgressWrapper htmlFor='progress-bar'>
+			<Progress id={'progress-bar'} style={styles} value={value} max={100} />
+			<VisuallyHidden>{value} percent complete</VisuallyHidden>
+		</ProgressWrapper>
 	);
 };
 
@@ -39,6 +38,7 @@ const Progress = styled.progress`
 	border-radius: 4px;
 	height: var(--height);
 	width: 370px;
+	padding: var(--padding);
 
 	&::-webkit-progress-bar {
 		background-color: transparent;
