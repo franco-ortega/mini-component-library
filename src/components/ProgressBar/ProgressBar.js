@@ -48,13 +48,13 @@ const Progress = styled.progress`
 		background-color: ${COLORS.primary};
 		border-top-left-radius: inherit;
 		border-bottom-left-radius: inherit;
-		border-radius: ${(p) => p.value === 100 && '4px'};
+		border-radius: ${(p) => p.value > 99 && '4px'};
 	}
 
 	&::-webkit-progress-value {
 		background-color: ${COLORS.primary};
 		border-top-left-radius: 4px;
 		border-bottom-left-radius: 4px;
-		border-radius: ${(p) => p.value === 100 && '4px'};
+		border-radius: ${(p) => p.value > 99 && '4px'};
 	}
 `;
