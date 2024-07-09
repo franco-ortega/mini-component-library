@@ -7,13 +7,14 @@ import VisuallyHidden from '../VisuallyHidden';
 
 const SIZES = {
 	large: {
-		height: `${24 / 16}rem`,
+		'--height': `${24 / 16}rem`,
+		padding: '4px',
 	},
 	medium: {
-		height: `${12 / 16}rem`,
+		'--height': `${12 / 16}rem`,
 	},
 	small: {
-		height: `${8 / 16}rem`,
+		'--height': `${8 / 16}rem`,
 	},
 };
 
@@ -35,17 +36,25 @@ const ProgressWrapper = styled.label``;
 
 const Progress = styled.progress`
 	background-color: ${COLORS.transparentGray15};
+	border-radius: 4px;
+	height: var(--height);
 	width: 370px;
+
+	&::-webkit-progress-bar {
+		background-color: transparent;
+	}
 
 	&::-moz-progress-bar {
 		background-color: ${COLORS.primary};
+		border-top-left-radius: inherit;
+		border-bottom-left-radius: inherit;
 	}
 
 	&::-webkit-progress-value {
 		background-color: ${COLORS.primary};
-	}
-
-	&::-webkit-progress-bar {
-		background-color: ${COLORS.transparentGray15};
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
 	}
 `;
+
+// border-top-right-radius: ${(p) => p.value === 100 && '4px'};
