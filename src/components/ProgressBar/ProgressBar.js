@@ -9,7 +9,7 @@ const STYLES = {
 	large: {
 		'--height': `${24 / 16}rem`,
 		'--padding': '4px',
-		'--borderRadius': `${8 + 4}px`,
+		'--borderRadius': '8px',
 	},
 	medium: {
 		'--height': `${12 / 16}rem`,
@@ -43,7 +43,9 @@ const ProgressBar = ({ value, size }) => {
 
 export default ProgressBar;
 
-const ProgressWrapper = styled.label``;
+const ProgressWrapper = styled.label`
+	// background-color: red;
+`;
 
 const Progress = styled.progress`
 	background-color: ${COLORS.transparentGray15};
@@ -59,15 +61,15 @@ const Progress = styled.progress`
 
 	&::-moz-progress-bar {
 		background-color: ${COLORS.primary};
-		border-top-left-radius: inherit;
-		border-bottom-left-radius: inherit;
-		border-radius: ${(p) => p.value > 99 && 'var(--borderRadius)'};
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-radius: ${(p) => p.value > 99 && '4px'};
 	}
 
 	&::-webkit-progress-value {
 		background-color: ${COLORS.primary};
-		border-top-left-radius: var(--borderRadius);
-		border-bottom-left-radius: var(--borderRadius);
-		border-radius: ${(p) => p.value > 99 && 'var(--borderRadius)'};
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+		border-radius: ${(p) => p.value > 99 && '4px'};
 	}
 `;
