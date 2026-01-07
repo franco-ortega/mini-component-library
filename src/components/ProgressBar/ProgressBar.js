@@ -10,14 +10,17 @@ const STYLES = {
 		'--height': `${24 / 16}rem`,
 		'--padding': '4px',
 		'--borderRadius': '8px',
+		'--leftRadius': '4px',
 	},
 	medium: {
 		'--height': `${12 / 16}rem`,
 		'--borderRadius': '4px',
+		'--leftRadius': '2px',
 	},
 	small: {
 		'--height': `${8 / 16}rem`,
 		'--borderRadius': '4px',
+		'--leftRadius': '2px',
 	},
 };
 
@@ -31,7 +34,10 @@ const ProgressBar = ({ value, size }) => {
 		<label htmlFor='progress-bar'>
 			<Progress
 				id={'progress-bar'}
+				role='progressbar'
 				aria-valuenow={value}
+				aria-valuemin='0'
+				aria-valuemax='100'
 				style={styles}
 				value={value}
 				max={100}
@@ -50,16 +56,17 @@ const Progress = styled.progress`
 	width: 370px;
 	padding: var(--padding);
 	box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
+	-webkit-appearance: none;
 
 	&::-webkit-progress-bar,
 	&::-moz-progress-bar,
 	&::-webkit-progress-value {
 		background-color: ${COLORS.primary};
-		border-top-left-radius: 4px;
-		border-bottom-left-radius: 4px;
+		border-top-left-radius: var(--leftRadius);
+		border-bottom-left-radius: var(--leftRadius);
 
 		/* round the radius when progress bar is full */
-		border-top-right-radius: ${(p) => p.value > 99 && '4px'};
-		border-bottom-right-radius: ${(p) => p.value > 99 && '4px'};
+		border-top-right-radius: ${(p) => p.value > 99 && 'var(--leftRadius)'};
+		border-bottom-right-radius: ${(p) => p.value > 99 && 'var(--leftRadius)'};
 	}
 `;
