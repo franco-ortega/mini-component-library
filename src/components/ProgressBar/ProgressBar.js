@@ -28,7 +28,7 @@ const ProgressBar = ({ value, size }) => {
 		throw new Error(`Oops! Unknown size passed to progress bar: ${size}`);
 
 	return (
-		<ProgressWrapper htmlFor='progress-bar'>
+		<label htmlFor='progress-bar'>
 			<Progress
 				id={'progress-bar'}
 				aria-valuenow={value}
@@ -37,15 +37,11 @@ const ProgressBar = ({ value, size }) => {
 				max={100}
 			/>
 			<VisuallyHidden>{value} percent complete</VisuallyHidden>
-		</ProgressWrapper>
+		</label>
 	);
 };
 
 export default ProgressBar;
-
-const ProgressWrapper = styled.label`
-	// background-color: red;
-`;
 
 const Progress = styled.progress`
 	background-color: ${COLORS.transparentGray15};
@@ -55,21 +51,15 @@ const Progress = styled.progress`
 	padding: var(--padding);
 	box-shadow: inset 0px 2px 4px ${COLORS.transparentGray35};
 
-	&::-webkit-progress-bar {
-		background-color: transparent;
-	}
-
-	&::-moz-progress-bar {
-		background-color: ${COLORS.primary};
-		border-top-left-radius: 4px;
-		border-bottom-left-radius: 4px;
-		border-radius: ${(p) => p.value > 99 && '4px'};
-	}
-
+	&::-webkit-progress-bar,
+	&::-moz-progress-bar,
 	&::-webkit-progress-value {
 		background-color: ${COLORS.primary};
 		border-top-left-radius: 4px;
 		border-bottom-left-radius: 4px;
-		border-radius: ${(p) => p.value > 99 && '4px'};
+
+		/* round the radius when progress bar is full */
+		border-top-right-radius: ${(p) => p.value > 99 && '4px'};
+		border-bottom-right-radius: ${(p) => p.value > 99 && '4px'};
 	}
 `;
