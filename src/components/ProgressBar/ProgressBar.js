@@ -7,20 +7,20 @@ import VisuallyHidden from '../VisuallyHidden';
 
 const STYLES = {
 	large: {
-		'--height': `${24 / 16}rem`,
-		'--padding': '4px',
-		'--borderRadius': '8px',
-		'--leftRadius': '4px',
+		height: '24px',
+		padding: '4px',
+		borderRadius: '8px',
+		leftRadius: '4px',
 	},
 	medium: {
-		'--height': `${12 / 16}rem`,
-		'--borderRadius': '4px',
-		'--leftRadius': '2px',
+		height: '12px',
+		borderRadius: '4px',
+		leftRadius: '2px',
 	},
 	small: {
-		'--height': `${8 / 16}rem`,
-		'--borderRadius': '4px',
-		'--leftRadius': '2px',
+		height: '8px',
+		borderRadius: '4px',
+		leftRadius: '2px',
 	},
 };
 
@@ -38,7 +38,12 @@ const ProgressBar = ({ value, size }) => {
 				aria-valuenow={value}
 				aria-valuemin='0'
 				aria-valuemax='100'
-				style={styles}
+				style={{
+					'--height': styles.height,
+					'--padding': styles.padding,
+					'--borderRadius': styles.borderRadius,
+					'--leftRadius': styles.leftRadius,
+				}}
 				value={value}
 				max={100}
 			/>
